@@ -76,17 +76,17 @@ class Juego:
             self.bloqueado = False
             if self.vidas <= 0:
                 return "fin"
-        
-        if self.bloqueado:
-            if evento.type == pygame.MOUSEBUTTONUP:
-                self.bloqueado = False
-                if self.vidas > 0:
-                    self.pregunta_actual = random.choice(self.preguntas)
+       
+            if self.bloqueado:
+                if evento.type == pygame.MOUSEBUTTONUP:
+                    self.bloqueado = False
+                    if self.vidas > 0:
+                        self.pregunta_actual = random.choice(self.preguntas)
                     self.botones_opciones = self.crear_botones_respuesta()
                     self.primer_intento_fallido = False  # Reinicia doble chance
                     self.tiempo_restante = self.tiempo_limite
                     self.ultimo_tick = pygame.time.get_ticks()
-            return
+                return
 
         if evento.type == pygame.MOUSEBUTTONDOWN:
         # Comodines

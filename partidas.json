@@ -1,6 +1,6 @@
 [
     {
-        "nombre": "flama",
+        "nombre": "manu",
         "puntaje": -25,
         "fecha": "2025-07-04 16:18:28"
     },
@@ -10,37 +10,37 @@
         "fecha": "2025-07-04 16:19:30"
     },
     {
-        "nombre": "flama",
+        "nombre": "tiago",
         "puntaje": -25,
         "fecha": "2025-07-04 16:20:28"
     },
     {
-        "nombre": "flama",
+        "nombre": "nacho",
         "puntaje": 75,
         "fecha": "2025-07-04 16:35:56"
     },
     {
-        "nombre": "dfsdf",
+        "nombre": "jose",
         "puntaje": 25,
         "fecha": "2025-07-04 16:39:14"
     },
     {
-        "nombre": "sdsdf",
+        "nombre": "lucas",
         "puntaje": -25,
         "fecha": "2025-07-04 16:40:51"
     },
     {
-        "nombre": "k{p",
+        "nombre": "pao",
         "puntaje": 25,
         "fecha": "2025-07-04 16:41:11"
     },
     {
-        "nombre": "gj",
+        "nombre": "coco",
         "puntaje": -75,
         "fecha": "2025-07-04 16:41:35"
     },
     {
-        "nombre": "cgvhjv",
+        "nombre": "gaston",
         "puntaje": -25,
         "fecha": "2025-07-04 16:45:52"
     },
@@ -75,13 +75,43 @@
         "fecha": "2025-07-04 18:24:29"
     },
     {
-        "nombre": "hhh",
+        "nombre": "gaby",
         "puntaje": -75,
         "fecha": "2025-07-04 18:27:11"
     },
     {
-        "nombre": "fgdfg",
+        "nombre": "pedro",
         "puntaje": 25,
         "fecha": "2025-07-04 18:45:12"
+    },
+    {
+        "nombre": "lauti",
+        "puntaje": -25,
+        "fecha": "2025-07-04 18:55:13"
+    },
+    {
+        "nombre": "rthrth",
+        "puntaje": -75,
+        "fecha": "2025-07-04 19:27:52"
+    },
+    {
+        "nombre": "gjklhj",
+        "puntaje": -75,
+        "fecha": "2025-07-04 19:27:55"
+    },
+    {
+        "nombre": "hjkl",
+        "puntaje": -75,
+        "fecha": "2025-07-04 19:27:58"
+    },
+    {
+        "nombre": "ljnkñ",
+        "puntaje": -75,
+        "fecha": "2025-07-04 19:28:00"
+    },
+    {
+        "nombre": "dsfgdfgsdg",
+        "puntaje": 200,
+        "fecha": "2025-07-04 19:28:28"
     }
 ]

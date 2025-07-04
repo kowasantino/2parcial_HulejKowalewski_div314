@@ -28,7 +28,7 @@ class PantallaRanking:
 
     def dibujar(self):
         self.pantalla.fill((30, 30, 30))
-        fuente = pygame.font.SysFont("Arial", 32)
+        fuente = pygame.font.Font("PressStart2P.ttf", 12)
         top10 = self.obtener_top10()
         y = 80
         for i, (nombre, puntaje) in enumerate(top10, 1):

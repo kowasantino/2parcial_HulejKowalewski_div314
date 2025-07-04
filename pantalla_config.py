@@ -7,14 +7,14 @@ class PantallaConfig:
     def __init__(self, pantalla):
         self.pantalla = pantalla
         self.boton_volver = Boton(300, 400, 150, 30, "Volver", FUENTE_RANK)
-        self.boton_musica = Boton(100, 100, 150, 40, "Música: ON", FUENTE_RANK)
-        self.boton_efectos = Boton(100, 200, 150, 40, "Efectos: ON", FUENTE_RANK)
+        self.boton_musica = Boton(100, 40, 150, 40, "Música: ON", FUENTE_VOLUMEN)
+        self.boton_efectos = Boton(100, 180, 150, 40, "Efectos: ON", FUENTE_VOLUMEN)
         self.volumen_musica = 0.2
         self.volumen_efectos = 0.5
         self.musica_activada = True
         self.efectos_activados = True
         # Barras de volumen (x, y, ancho, alto)
-        self.rect_vol_musica = pygame.Rect(100, 160, 200, 20)
+        self.rect_vol_musica = pygame.Rect(100, 120, 200, 20)
         self.rect_vol_efectos = pygame.Rect(100, 260, 200, 20)
         pygame.mixer.music.set_volume(self.volumen_musica)
 
@@ -59,14 +59,14 @@ class PantallaConfig:
         self.boton_volver.dibujar(self.pantalla)
         self.boton_musica.dibujar(self.pantalla)
         self.boton_efectos.dibujar(self.pantalla)
-        fuente = pygame.font.SysFont("Arial", 28)
+        fuente = pygame.font.Font("PressStart2P.ttf", 14)
         # Volumen música
         texto_vol = fuente.render(f"Volumen Música: {int(self.volumen_musica*100)}%", True, COLOR_BLANCO)
-        self.pantalla.blit(texto_vol, (100, 130))
+        self.pantalla.blit(texto_vol, (100, 100))
         pygame.draw.rect(self.pantalla, COLOR_AZUL, self.rect_vol_musica)
         pygame.draw.rect(self.pantalla, COLOR_BLANCO, (self.rect_vol_musica.x, self.rect_vol_musica.y, int(self.rect_vol_musica.width * self.volumen_musica), self.rect_vol_musica.height))
         # Volumen efectos
         texto_ef = fuente.render(f"Volumen Efectos: {int(self.volumen_efectos*100)}%", True, COLOR_BLANCO)
-        self.pantalla.blit(texto_ef, (100, 230))
+        self.pantalla.blit(texto_ef, (100, 240))
         pygame.draw.rect(self.pantalla, COLOR_AZUL, self.rect_vol_efectos)
         pygame.draw.rect(self.pantalla, COLOR_BLANCO, (self.rect_vol_efectos.x, self.rect_vol_efectos.y, int(self.rect_vol_efectos.width * self.volumen_efectos), self.rect_vol_efectos.height))
