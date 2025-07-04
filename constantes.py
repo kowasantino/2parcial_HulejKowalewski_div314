@@ -1,0 +1,48 @@
+import pygame
+pygame.init()
+
+COLOR_BLANCO = (255,255,255)
+COLOR_NEGRO = (0,0,0)
+COLOR_VERDE = (0,255,0)
+COLOR_ROJO = (255,0,0)
+COLOR_AZUL = (0,0,255)
+COLOR_VIOLETA = (134,23,219)
+COLOR_AMARILLO = (255, 255, 0)
+ANCHO = 500
+ALTO = 500
+PANTALLA = (ANCHO,ALTO)
+FPS = 30
+
+BOTON_JUGAR = 0
+BOTON_CONFIG = 1
+BOTON_PUNTUACIONES = 2
+BOTON_SALIR = 3
+
+ANCHO_PREGUNTA = 350
+ALTO_PREGUNTA = 150
+ANCHO_BOTON = 300
+ALTO_BOTON = 60
+ANCHO_CUADRO = 250
+ALTO_CUADRO = 50
+
+TAMAÑO_BOTON_VOLUMEN = (60,60)
+TAMAÑO_BOTON_VOLVER = (100,40)
+CLICK_SONIDO = pygame.mixer.Sound("click.mp3")
+ERROR_SONIDO = pygame.mixer.Sound("error.mp3")
+FUENTE_PREGUNTA = pygame.font.Font("PressStart2P.ttf",16)
+FUENTE_RESPUESTA = pygame.font.Font("PressStart2P.ttf",12)
+FUENTE_TEXTO = pygame.font.Font("PressStart2P.ttf",12)
+FUENTE_VOLUMEN = pygame.font.Font("PressStart2P.ttf",12)
+FUENTE_CUADRO = pygame.font.Font("PressStart2P.ttf",20)
+FUENTE_BOTON = pygame.font.Font("PressStart2P.ttf", 30)
+FUENTE_RANK = pygame.font.Font("PressStart2P.ttf", 15)
+FUENTE_COMODIN = pygame.font.Font("PressStart2P.ttf", 10)
+BOTON_JUGAR = 0
+
+CANTIDAD_VIDAS = 3
+PUNTUACION_ACIERTO = 50
+PUNTUACION_ERROR = 25
+TIEMPO_JUEGO = 30
+
+EFECTOS_ACTIVADOS = True
+VOLUMEN_EFECTOS = 0.5
