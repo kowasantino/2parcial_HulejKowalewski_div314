@@ -58,57 +58,57 @@ class Juego:
             boton = Boton(100, 200 + i * 70, ANCHO_BOTON, ALTO_BOTON, texto, FUENTE_RESPUESTA)
             botones.append((boton, letra))
         return botones
+    
+    def cargar_nueva_pregunta(self):
+        self.pregunta_actual = random.choice(self.preguntas)
+        self.botones_opciones = self.crear_botones_respuesta()
+        self.primer_intento_fallido = False
+        self.usando_doble_chance = False
+        self.tiempo_restante = self.tiempo_limite
+        self.ultimo_tick = pygame.time.get_ticks()
+        self.bloqueado = False
+
 
     def actualizar(self, evento):
         ahora = pygame.time.get_ticks()
         delta = (ahora - self.ultimo_tick) / 1000  # en segundos
         self.ultimo_tick = ahora
         self.tiempo_restante -= delta
+
+        # Si se acaba el tiempo, perder vida y cargar otra pregunta
         if self.tiempo_restante <= 0:
             self.vidas -= 1
             self.puntaje -= PUNTUACION_ERROR
             self.racha_aciertos = 0
-            self.tiempo_restante = self.tiempo_limite
-            self.pregunta_actual = random.choice(self.preguntas)
-            self.botones_opciones = self.crear_botones_respuesta()
-            self.primer_intento_fallido = False
-            self.usando_doble_chance = False
-            self.bloqueado = False
             if self.vidas <= 0:
                 return "fin"
-       
-            if self.bloqueado:
-                if evento.type == pygame.MOUSEBUTTONUP:
-                    self.bloqueado = False
-                    if self.vidas > 0:
-                        self.pregunta_actual = random.choice(self.preguntas)
-                    self.botones_opciones = self.crear_botones_respuesta()
-                    self.primer_intento_fallido = False  # Reinicia doble chance
-                    self.tiempo_restante = self.tiempo_limite
-                    self.ultimo_tick = pygame.time.get_ticks()
-                return
+            self.cargar_nueva_pregunta()
+            return
 
+        # Si se hizo click, procesar evento
         if evento.type == pygame.MOUSEBUTTONDOWN:
-        # Comodines
+
+            # Comodines
             if self.comodines["bomba"] and self.boton_bomba.esta_clickeado(evento.pos):
                 self.usar_bomba()
                 self.comodines["bomba"] = False
+
             if self.comodines["x2"] and self.boton_x2.esta_clickeado(evento.pos):
                 self.usando_x2 = True
                 self.comodines["x2"] = False
+
             if self.comodines["doble_chance"] and self.boton_doble.esta_clickeado(evento.pos):
                 self.usando_doble_chance = True
                 self.comodines["doble_chance"] = False
+
             if self.comodines["pasar"] and self.boton_pasar.esta_clickeado(evento.pos):
                 self.pasar_pregunta()
                 self.comodines["pasar"] = False
-                return  # No procesar respuesta si usó pasar
+                return
 
-        # Opciones de respuesta
+            # Respuesta
             for i, (boton, letra) in enumerate(self.botones_opciones):
                 if boton.esta_clickeado(evento.pos) and boton.habilitado:
-                    print("Opción clickeada:", i+1)
-                    print("Respuesta correcta:", self.pregunta_actual["respuesta_correcta"])
                     if str(i+1) == self.pregunta_actual["respuesta_correcta"]:
                         puntos = PUNTUACION_ACIERTO
                         if self.usando_x2:
@@ -122,12 +122,8 @@ class Juego:
                         if EFECTOS_ACTIVADOS:
                             CLICK_SONIDO.set_volume(VOLUMEN_EFECTOS)
                             CLICK_SONIDO.play()
-                        self.primer_intento_fallido = False
-                        self.usando_doble_chance = False
-                        self.bloqueado = True
-                        if self.vidas <= 0:
-                            return "fin"
-                        break  # Sale del for, no procesa más botones
+                        self.cargar_nueva_pregunta()
+                        return
                     else:
                         if self.usando_doble_chance and not self.primer_intento_fallido:
                             self.primer_intento_fallido = True
@@ -135,21 +131,19 @@ class Juego:
                             if EFECTOS_ACTIVADOS:
                                 ERROR_SONIDO.set_volume(VOLUMEN_EFECTOS)
                                 ERROR_SONIDO.play()
-                            # No bloquea, permite volver a intentar
-                            break
+                            return
                         else:
                             self.vidas -= 1
                             self.puntaje -= PUNTUACION_ERROR
                             self.racha_aciertos = 0
                             if EFECTOS_ACTIVADOS:
-                                 ERROR_SONIDO.set_volume(VOLUMEN_EFECTOS)
-                                 ERROR_SONIDO.play()
-                            self.primer_intento_fallido = False
-                            self.usando_doble_chance = False
-                            self.bloqueado = True
+                                ERROR_SONIDO.set_volume(VOLUMEN_EFECTOS)
+                                ERROR_SONIDO.play()
                             if self.vidas <= 0:
                                 return "fin"
-                            break  # Sale del for, no procesa más botones
+                            self.cargar_nueva_pregunta()
+                            return
+
     def dibujar(self):
         self.pantalla.blit(self.fondo, (0, 0))
 

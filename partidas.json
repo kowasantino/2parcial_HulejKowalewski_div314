@@ -113,5 +113,10 @@
         "nombre": "dsfgdfgsdg",
         "puntaje": 200,
         "fecha": "2025-07-04 19:28:28"
+    },
+    {
+        "nombre": "gotti",
+        "puntaje": -25,
+        "fecha": "2025-07-04 19:50:23"
     }
 ]
